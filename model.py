@@ -7,7 +7,6 @@ from keras.models import Sequential
 from keras.layers import Dropout,Conv2D,Flatten,Dense, MaxPooling2D, BatchNormalization
 from keras.models import load_model
 
-
 def generator(dir, gen=image.ImageDataGenerator(rescale=1./255), shuffle=True,batch_size=1,target_size=(24,24),class_mode='categorical' ):
 
     return gen.flow_from_directory(dir,batch_size=batch_size,shuffle=shuffle,color_mode='grayscale',class_mode=class_mode,target_size=target_size)
