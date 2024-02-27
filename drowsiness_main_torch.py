@@ -139,20 +139,22 @@ while True:
         cv2.putText(frame, "Closed", (10, height - 20), font, 1, (255, 255, 255), 1, cv2.LINE_AA)
     else:
         score = score - 1
+        if score<10:
+            sound.stop()
         cv2.putText(frame, "Open", (10, height - 20), font, 1, (255, 255, 255), 1, cv2.LINE_AA)
 
     if score < 0:
         score = 0
     cv2.putText(frame, 'Score:' + str(score), (100, height - 20), font, 1, (255, 255, 255), 1, cv2.LINE_AA)
 
-    if score > 15:
+    if score > 10:
         # Person is feeling sleepy, so we beep the alarm
         cv2.imwrite(os.path.join(path, 'image.jpg'), frame)
         try:
             sound.play()
         except:
             pass
-        if thicc < 16:
+        if thicc < 11:
             thicc = thicc + 2
         else:
             thicc = thicc - 2
@@ -163,6 +165,12 @@ while True:
     cv2.imshow('frame', frame)
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
+
+    # if score == 14:
+    #  try:
+    #     sound.stop()
+    #  except:
+    #     pass
 
 # Release the video capture
 cap.release()

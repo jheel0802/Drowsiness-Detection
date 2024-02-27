@@ -76,6 +76,8 @@ while(True):
     # if(rpred[0]==1 or lpred[0]==1):
     else:
         score=score-1
+        if score<10:
+            sound.stop()
         cv2.putText(frame,"Open",(10,height-20), font, 1,(255,255,255),1,cv2.LINE_AA)
     
         
